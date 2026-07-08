@@ -84,7 +84,10 @@ function checkout(){
 
     mesaj += "%0A💰 Toplam: " + toplam + " TL";
 
-    window.open("https://wa.me/905359723901?text=" + mesaj, "_blank");
+  window.open(
+  "https://wa.me/905359723901?text=" + encodeURIComponent(mesaj),
+  "_blank"
+);
 }
 
 renderCart();
