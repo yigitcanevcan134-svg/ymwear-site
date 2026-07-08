@@ -6,40 +6,58 @@
 <title>Y&M WEAR</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#050505;color:white}
-header{position:fixed;top:0;width:100%;padding:20px 8%;display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,.9);z-index:10}
-.logo{font-size:25px;font-weight:bold;letter-spacing:4px}
-nav a{color:white;text-decoration:none;margin-left:22px;font-size:14px}
-.cart{color:#d4af37;font-weight:bold;margin-left:20px}
-.hero{height:100vh;background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.75)),url("https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1600");background-size:cover;background-position:center;display:flex;align-items:center;padding:0 8%}
-.hero h1{font-size:75px;letter-spacing:5px}
-.hero p{font-size:23px;margin:20px 0;color:#ddd}
-.btn{display:inline-block;padding:15px 38px;background:white;color:black;text-decoration:none;border-radius:40px;font-weight:bold}
-section{padding:80px 8%}
-.title{text-align:center;font-size:38px;margin-bottom:45px}
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:28px}
-.card{background:#111;border:1px solid #2a2a2a;border-radius:20px;overflow:hidden;text-align:center;transition:.3s}
+body{background:#050505;color:#fff}
+.top{background:#000;color:#d4af37;text-align:center;padding:10px;font-size:14px}
+header{position:sticky;top:0;z-index:99;background:#080808;padding:18px 7%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #222}
+.logo{font-size:28px;font-weight:bold;letter-spacing:5px}
+nav a{color:#fff;text-decoration:none;margin-left:22px;font-size:14px}
+nav a:hover{color:#d4af37}
+.cart{color:#d4af37;font-weight:bold}
+.hero{height:88vh;background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.75)),url("https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1600");background-size:cover;background-position:center;display:flex;align-items:center;padding:0 8%}
+.hero h1{font-size:78px;letter-spacing:6px}
+.hero p{font-size:24px;margin:18px 0;color:#ddd}
+.btn{display:inline-block;margin-top:18px;padding:15px 36px;background:#d4af37;color:#000;border-radius:35px;text-decoration:none;font-weight:bold}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:35px 7%;background:#090909}
+.feature{border:1px solid #222;padding:22px;border-radius:14px;text-align:center}
+.feature h3{color:#d4af37;margin-bottom:8px}
+section{padding:75px 7%}
+.title{text-align:center;font-size:38px;margin-bottom:40px}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:25px}
+.card{background:#111;border:1px solid #222;border-radius:18px;overflow:hidden;text-align:center;transition:.3s;position:relative}
 .card:hover{transform:translateY(-8px);border-color:#d4af37}
-.card img{width:100%;height:320px;object-fit:cover}
-.card h3{margin:18px 0 8px;font-size:22px}
-.price{color:#d4af37;font-size:21px;font-weight:bold}
-.size{color:#aaa;margin-top:8px;font-size:14px}
-.card button{margin:18px 5px 25px;padding:11px 20px;border:none;border-radius:25px;cursor:pointer}
-.buy{background:#fff;color:#000}
+.badge{position:absolute;top:12px;left:12px;background:#d4af37;color:#000;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:bold}
+.card img{width:100%;height:300px;object-fit:cover}
+.card h3{margin:18px 0 8px}
+.price{color:#d4af37;font-size:20px;font-weight:bold}
+.size{font-size:13px;color:#aaa;margin-top:8px}
+.card button{margin:16px 4px 24px;padding:10px 17px;border:none;border-radius:25px;cursor:pointer;font-weight:bold}
+.buy{background:#d4af37;color:#000}
 .info{background:#222;color:#fff}
-.about,.contact{text-align:center;background:#0d0d0d;line-height:1.8}
+.banners{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+.banner{height:260px;border-radius:18px;padding:30px;display:flex;flex-direction:column;justify-content:end;background-size:cover;background-position:center;overflow:hidden}
+.banner h3{font-size:28px}
+.banner a{color:#d4af37;text-decoration:none;margin-top:12px;font-weight:bold}
+.about,.contact{background:#0d0d0d;text-align:center;line-height:1.8}
+.about p{max-width:850px;margin:auto;color:#ddd;font-size:18px}
 .social a{display:inline-block;margin:10px;padding:12px 24px;border:1px solid #d4af37;color:#d4af37;text-decoration:none;border-radius:30px}
-footer{padding:30px;text-align:center;background:#000;color:#777}
-@media(max-width:700px){.hero h1{font-size:42px}nav{display:none}.hero p{font-size:18px}}
+footer{background:#000;color:#777;text-align:center;padding:30px}
+@media(max-width:750px){
+.hero h1{font-size:43px}
+.hero p{font-size:18px}
+nav{display:none}
+}
 </style>
 </head>
 <body>
+
+<div class="top">750 TL ve üzeri siparişlerde ücretsiz kargo • Yeni koleksiyon çok yakında</div>
 
 <header>
 <div class="logo">Y&M WEAR</div>
 <nav>
 <a href="#">Ana Sayfa</a>
 <a href="#urunler">Ürünler</a>
+<a href="#yeni">Yeni Gelenler</a>
 <a href="#hakkimizda">Hakkımızda</a>
 <a href="#iletisim">İletişim</a>
 <span class="cart">🛒 Sepet</span>
@@ -49,54 +67,49 @@ footer{padding:30px;text-align:center;background:#000;color:#777}
 <div class="hero">
 <div>
 <h1>Y&M WEAR</h1>
-<p>Tarzını Giy. Kendini Göster.</p>
-<a class="btn" href="#urunler">Alışverişe Başla</a>
+<p>Sade. Şık. Zamansız.</p>
+<a class="btn" href="#urunler">Koleksiyonu Keşfet</a>
 </div>
+</div>
+
+<div class="features">
+<div class="feature"><h3>🚚 Ücretsiz Kargo</h3><p>750 TL üzeri siparişlerde</p></div>
+<div class="feature"><h3>🔒 Güvenli Ödeme</h3><p>Güvenli alışveriş deneyimi</p></div>
+<div class="feature"><h3>↩️ Kolay İade</h3><p>14 gün içinde iade</p></div>
+<div class="feature"><h3>📞 7/24 Destek</h3><p>WhatsApp ile hızlı iletişim</p></div>
 </div>
 
 <section id="urunler">
 <h2 class="title">Yeni Koleksiyon</h2>
 <div class="products">
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=800">
-<h3>Oversize Tişört</h3>
-<p class="price">799 TL</p>
-<p class="size">Bedenler: S • M • L • XL</p>
-<button class="buy">Sepete Ekle</button><button class="info">İncele</button>
-</div>
+<div class="card"><span class="badge">Yeni</span><img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=800"><h3>Oversize Siyah Tişört</h3><p class="price">799 TL</p><p class="size">S • M • L • XL</p><button class="buy">Sepete Ekle</button><button class="info">İncele</button></div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800">
-<h3>Premium Gömlek</h3>
-<p class="price">999 TL</p>
-<p class="size">Bedenler: S • M • L • XL</p>
-<button class="buy">Sepete Ekle</button><button class="info">İncele</button>
-</div>
+<div class="card"><span class="badge">Yeni</span><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800"><h3>Oversize Beyaz Tişört</h3><p class="price">799 TL</p><p class="size">S • M • L • XL</p><button class="buy">Sepete Ekle</button><button class="info">İncele</button></div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1516762689617-e1cffcef479d?w=800">
-<h3>Baggy Pantolon</h3>
-<p class="price">1199 TL</p>
-<p class="size">Bedenler: 30 • 32 • 34 • 36</p>
-<button class="buy">Sepete Ekle</button><button class="info">İncele</button>
-</div>
+<div class="card"><span class="badge">Popüler</span><img src="https://images.unsplash.com/photo-1506629905607-d9c297d294e5?w=800"><h3>Premium Hoodie</h3><p class="price">1.299 TL</p><p class="size">S • M • L • XL</p><button class="buy">Sepete Ekle</button><button class="info">İncele</button></div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1521369909029-2afed882baee?w=800">
-<h3>Y&M Şapka</h3>
-<p class="price">399 TL</p>
-<p class="size">Renkler: Siyah • Bej • Beyaz</p>
-<button class="buy">Sepete Ekle</button><button class="info">İncele</button>
-</div>
+<div class="card"><span class="badge">Yeni</span><img src="https://images.unsplash.com/photo-1516762689617-e1cffcef479d?w=800"><h3>Baggy Jean</h3><p class="price">1.199 TL</p><p class="size">30 • 32 • 34 • 36</p><button class="buy">Sepete Ekle</button><button class="info">İncele</button></div>
 
+<div class="card"><span class="badge">Yeni</span><img src="https://images.unsplash.com/photo-1521369909029-2afed882baee?w=800"><h3>Y&M Şapka</h3><p class="price">399 TL</p><p class="size">Siyah • Bej • Beyaz</p><button class="buy">Sepete Ekle</button><button class="info">İncele</button></div>
+
+<div class="card"><span class="badge">Premium</span><img src="https://images.unsplash.com/photo-1516257984-b1b4d707412e?w=800"><h3>Bomber Ceket</h3><p class="price">1.499 TL</p><p class="size">S • M • L • XL</p><button class="buy">Sepete Ekle</button><button class="info">İncele</button></div>
+
+</div>
+</section>
+
+<section id="yeni">
+<h2 class="title">Koleksiyonlar</h2>
+<div class="banners">
+<div class="banner" style="background-image:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.75)),url('https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=900')"><h3>Yeni Gelenler</h3><a href="#urunler">Keşfet →</a></div>
+<div class="banner" style="background-image:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.75)),url('https://images.unsplash.com/photo-1483985988355-763728e1935b?w=900')"><h3>Çok Satanlar</h3><a href="#urunler">Keşfet →</a></div>
+<div class="banner" style="background-image:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.75)),url('https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=900')"><h3>Fırsat Ürünleri</h3><a href="#urunler">Keşfet →</a></div>
 </div>
 </section>
 
 <section class="about" id="hakkimizda">
 <h2 class="title">Hakkımızda</h2>
-<p>Y&M WEAR; sade, kaliteli ve zamansız tasarımları modern sokak modasıyla birleştiren yeni nesil bir giyim markasıdır.</p>
-<p>Yolun başındayız, hayallerimiz büyük. Her desteğiniz bizim için çok değerli.</p>
+<p>Y&M WEAR; sade, kaliteli ve zamansız tasarımları modern sokak modasıyla birleştiren yeni nesil bir giyim markasıdır. Yolun başındayız, hayallerimiz büyük. Her destek bizim için çok değerli.</p>
 </section>
 
 <section class="contact" id="iletisim">
