@@ -71,9 +71,20 @@ function removeItem(index){
 function checkout(){
     if(cart.length === 0){
         alert("Sepetiniz boş.");
-    } else {
-        alert("Ödeme sistemi yakında aktif olacak.");
+        return;
     }
+
+    let mesaj = "Merhaba, Y&M WEAR'dan sipariş vermek istiyorum:%0A%0A";
+    let toplam = 0;
+
+    cart.forEach(item => {
+        mesaj += "- " + item.name + " - " + item.price + " TL%0A";
+        toplam += item.price;
+    });
+
+    mesaj += "%0A💰 Toplam: " + toplam + " TL";
+
+    window.open("https://wa.me/90XXXXXXXXXX?text=" + mesaj, "_blank");
 }
 
 renderCart();
