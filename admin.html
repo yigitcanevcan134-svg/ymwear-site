@@ -1,92 +1,33 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Panel | Y&M WEAR</title>
-<style>
-body{margin:0;background:#050505;color:white;font-family:Arial}
-header{background:#080808;padding:20px 8%;display:flex;justify-content:space-between}
-a{color:#d4af37;text-decoration:none}
-.container{max-width:900px;margin:50px auto;padding:25px}
-input{width:100%;padding:14px;margin:8px 0;border-radius:10px;border:none}
-button{padding:12px 22px;border:none;border-radius:25px;background:#d4af37;color:#000;font-weight:bold;cursor:pointer;margin-top:10px}
-.box{background:#111;border:1px solid #333;border-radius:15px;padding:20px;margin-top:20px}
-.product{display:flex;justify-content:space-between;border-bottom:1px solid #333;padding:12px 0}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel | Y&M WEAR</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+  <header class="site-header">
+    <a class="logo" href="admin.html">Y&M WEAR Admin</a>
+    <nav><a href="index.html">Siteye Dön</a></nav>
+  </header>
 
-<header>
-<h2>Y&M WEAR Admin</h2>
-<a href="index.html">Siteye Dön</a>
-</header>
+  <main class="admin-page">
+    <h1>Ürün Yönetimi</h1>
+    <div class="admin-box">
+      <input id="productName" placeholder="Ürün adı" />
+      <input id="productPrice" placeholder="Fiyat" type="number" />
+      <input id="productImage" placeholder="Fotoğraf linki" />
+      <button class="primary-btn" onclick="adminAddProduct()">Ürün Ekle</button>
+    </div>
 
-<div class="container">
-<h1>Ürün Yönetimi</h1>
+    <div class="admin-box">
+      <h2>Ürünler</h2>
+      <div id="adminProductList"></div>
+    </div>
+  </main>
 
-<div class="box">
-<input id="name" placeholder="Ürün adı">
-<input id="price" placeholder="Fiyat">
-<input id="image" placeholder="Fotoğraf linki">
-<button onclick="addProduct()">Ürün Ekle</button>
-</div>
-
-<div class="box">
-<h2>Ürünler</h2>
-<div id="productList"></div>
-</div>
-</div>
-
-<script>
-let products = JSON.parse(localStorage.getItem("adminProducts")) || [];
-
-function addProduct(){
-  let name = document.getElementById("name").value;
-  let price = document.getElementById("price").value;
-  let image = document.getElementById("image").value;
-
-  if(name === "" || price === "" || image === ""){
-    alert("Tüm alanları doldur.");
-    return;
-  }
-
-  products.push({name, price, image});
-  localStorage.setItem("adminProducts", JSON.stringify(products));
-  renderProducts();
-
-  document.getElementById("name").value = "";
-  document.getElementById("price").value = "";
-  document.getElementById("image").value = "";
-}
-
-function deleteProduct(index){
-  products.splice(index,1);
-  localStorage.setItem("adminProducts", JSON.stringify(products));
-  renderProducts();
-}
-
-function renderProducts(){
-  let list = document.getElementById("productList");
-  list.innerHTML = "";
-
-  if(products.length === 0){
-    list.innerHTML = "<p>Henüz ürün yok.</p>";
-    return;
-  }
-
-  products.forEach((p,index)=>{
-    list.innerHTML += `
-      <div class="product">
-        <span>${p.name} - ${p.price} TL</span>
-        <button onclick="deleteProduct(${index})">Sil</button>
-      </div>
-    `;
-  });
-}
-
-renderProducts();
-</script>
-
+  <script src="js/app.js"></script>
+  <script>renderAdminProducts();</script>
 </body>
 </html>

@@ -1,162 +1,58 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Y&M WEAR</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
-body{background:#050505;color:white}
-header{background:#080808;padding:18px 7%;display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:28px;font-weight:bold;letter-spacing:5px}
-nav a{color:white;text-decoration:none;margin-left:20px}
-.cart{color:#d4af37;font-weight:bold}
-.hero{height:70vh;background:#111;display:flex;align-items:center;padding:0 8%}
-.hero h1{font-size:70px}
-.btn,.buy{background:#d4af37;color:#000;border:none;border-radius:25px;padding:12px 25px;font-weight:bold;cursor:pointer;text-decoration:none}
-section{padding:60px 7%}
-.title{text-align:center;font-size:36px;margin-bottom:35px}
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:25px}
-.card{background:#111;border:1px solid #333;border-radius:18px;text-align:center;overflow:hidden;padding-bottom:20px}
-.card img{width:100%;height:280px;object-fit:cover}
-.card h3{margin:15px 0}
-.price{color:#d4af37;font-size:22px;font-weight:bold}
-.size{color:#aaa;margin:8px 0 15px}
-.info{background:#333;color:white;border-radius:25px;padding:12px 25px;text-decoration:none}
-footer{text-align:center;background:#000;color:#777;padding:25px}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Y&M WEAR</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+  <header class="site-header">
+    <a class="logo" href="index.html">Y&M WEAR</a>
+    <nav>
+      <a href="index.html">Ana Sayfa</a>
+      <a href="#urunler">Ürünler</a>
+      <a href="#hakkimizda">Hakkımızda</a>
+      <a href="#iletisim">İletişim</a>
+      <a class="cart-link" href="cart.html">🛒 Sepet <span id="cartCount">0</span></a>
+    </nav>
+  </header>
 
-<header>
-<div class="logo">Y&M WEAR</div>
-<nav>
-<a href="index.html">Ana Sayfa</a>
-<a href="#urunler">Ürünler</a>
-<a href="#hakkimizda">Hakkımızda</a>
-<a href="#iletisim">İletişim</a>
-<a href="cart.html" class="cart">🛒 Sepet</a>
-</nav>
-</header>
-
-<div class="hero">
-<div>
-<h1>Y&M WEAR</h1>
-<p>Sade. Şık. Zamansız.</p><br>
-<a class="btn" href="#urunler">Koleksiyonu Keşfet</a>
-</div>
-</div>
-
-<section id="urunler">
-<h2 class="title">Yeni Koleksiyon</h2>
-
-<div class="products">
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=800">
-<h3>Oversize Siyah Tişört</h3>
-<p class="price">799 TL</p>
-<p class="size">S • M • L • XL</p>
-  <select class="beden">
-  <option>S</option>
-  <option>M</option>
-  <option>L</option>
-  <option>XL</option>
-</select>
-
-<select class="renk">
-  <option>Siyah</option>
-  <option>Beyaz</option>
-  <option>Gri</option>
-  <option>Bej</option>
-</select>
-<button class="buy" onclick="addToCart('Oversize Siyah Tişört',799)">Sepete Ekle</button>
-<a href="urun.html" class="info">İncele</a>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800">
-<h3>Oversize Beyaz Tişört</h3>
-<p class="price">799 TL</p>
-<p class="size">S • M • L • XL</p>
-<button class="buy" onclick="addToCartWithOptions(this,'Oversize Siyah Tişört',799)">Sepete Ekle</button>
-<a href="urun.html" class="info">İncele</a>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1506629905607-d9c297d294e5?w=800">
-<h3>Premium Hoodie</h3>
-<p class="price">1299 TL</p>
-<p class="size">S • M • L • XL</p>
-<button class="buy" onclick="addToCart('Premium Hoodie',1299)">Sepete Ekle</button>
-<a href="urun.html" class="info">İncele</a>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1516762689617-e1cffcef479d?w=800">
-<h3>Baggy Jean</h3>
-<p class="price">1199 TL</p>
-<p class="size">30 • 32 • 34 • 36</p>
-<button class="buy" onclick="addToCart('Baggy Jean',1199)">Sepete Ekle</button>
-<a href="urun.html" class="info">İncele</a>
-</div>
-
-</div>
-</section>
-
-<section id="hakkimizda">
-<h2 class="title">Hakkımızda</h2>
-<p style="text-align:center">Y&M WEAR; sade, kaliteli ve zamansız tasarımlar sunan giyim markasıdır.</p>
-</section>
-
-<section id="iletisim">
-<h2 class="title">İletişim</h2>
-<p style="text-align:center">Instagram / TikTok: <b>@ymwear.tr</b></p>
-</section>
-
-<footer>© 2026 Y&M WEAR</footer>
-
-<script>
-function addToCart(name, price){
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  cart.push({name:name, price:Number(price), beden:"Seçilmedi", renk:"Seçilmedi"});
-  localStorage.setItem("cart", JSON.stringify(cart));
-  alert(name + " sepete eklendi!");
-}
-
-function addToCartWithOptions(button, name, price){
-  let card = button.closest(".card");
-  let beden = card.querySelector(".beden") ? card.querySelector(".beden").value : "Seçilmedi";
-  let renk = card.querySelector(".renk") ? card.querySelector(".renk").value : "Seçilmedi";
-
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  cart.push({name:name, price:Number(price), beden:beden, renk:renk});
-  localStorage.setItem("cart", JSON.stringify(cart));
-
-  alert(name + " (" + beden + " - " + renk + ") sepete eklendi!");
-}
-
-let adminProducts = JSON.parse(localStorage.getItem("adminProducts")) || JSON.parse(localStorage.getItem("products")) || [];
-let productArea = document.querySelector(".products");
-
-adminProducts.forEach(product => {
-  productArea.innerHTML += `
-    <div class="card">
-      <img src="${product.image}">
-      <h3>${product.name}</h3>
-      <p class="price">${product.price} TL</p>
-      <p class="size">S • M • L • XL</p>
-      <select class="beden">
-        <option>S</option><option>M</option><option>L</option><option>XL</option>
-      </select>
-      <select class="renk">
-        <option>Siyah</option><option>Beyaz</option><option>Gri</option><option>Bej</option>
-      </select>
-      <button class="buy" onclick="addToCartWithOptions(this, '${product.name}', ${Number(product.price)})">Sepete Ekle</button>
-      <a href="urun.html" class="info">İncele</a>
+  <section class="hero">
+    <div class="hero-content">
+      <p class="eyebrow">Yeni sezon hazır</p>
+      <h1>Y&M WEAR</h1>
+      <p>Sade. Şık. Zamansız.</p>
+      <a class="primary-btn" href="#urunler">Koleksiyonu Keşfet</a>
     </div>
-  `;
-});
-</script>
+  </section>
+
+  <section class="features">
+    <div><b>🚚 Ücretsiz Kargo</b><span>750 TL üzeri siparişlerde</span></div>
+    <div><b>🔒 Güvenli Alışveriş</b><span>WhatsApp ile hızlı sipariş</span></div>
+    <div><b>↩️ Kolay İade</b><span>14 gün içinde iade</span></div>
+    <div><b>📞 7/24 Destek</b><span>WhatsApp ile iletişim</span></div>
+  </section>
+
+  <section id="urunler" class="section">
+    <h2 class="section-title">Yeni Koleksiyon</h2>
+    <div id="products" class="products"></div>
+  </section>
+
+  <section id="hakkimizda" class="section about">
+    <h2 class="section-title">Hakkımızda</h2>
+    <p>Y&M WEAR; sade, kaliteli ve zamansız tasarımları modern sokak modasıyla buluşturan yeni nesil bir giyim markasıdır.</p>
+  </section>
+
+  <section id="iletisim" class="section contact">
+    <h2 class="section-title">İletişim</h2>
+    <p>Instagram / TikTok: <b>@ymwear.tr</b></p>
+    <p>WhatsApp sipariş için sepet sayfasını kullanabilirsin.</p>
+  </section>
+
+  <footer>© 2026 Y&M WEAR - Tüm Hakları Saklıdır.</footer>
+
+  <script src="js/app.js"></script>
+  <script>renderHomeProducts(); updateCartCount();</script>
 </body>
 </html>

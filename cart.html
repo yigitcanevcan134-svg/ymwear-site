@@ -1,114 +1,36 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sepet | Y&M WEAR</title>
-<style>
-body{margin:0;background:#050505;color:white;font-family:Arial}
-header{background:#080808;padding:20px 8%;display:flex;justify-content:space-between}
-a{color:white;text-decoration:none}
-.container{max-width:1000px;margin:60px auto;padding:30px}
-h1{text-align:center}
-.item{display:flex;justify-content:space-between;background:#111;border:1px solid #333;border-radius:14px;padding:18px;margin-bottom:15px}
-.price,.total{color:#d4af37;font-weight:bold}
-.total{text-align:right;font-size:28px;margin-top:20px}
-button{padding:12px 25px;border:none;border-radius:25px;background:#d4af37;color:#000;font-weight:bold;cursor:pointer;margin-top:15px}
-input,textarea{width:100%;padding:14px;margin:8px 0;border-radius:10px;border:none}
-.empty{text-align:center;color:#aaa}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sepet | Y&M WEAR</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+  <header class="site-header">
+    <a class="logo" href="index.html">Y&M WEAR</a>
+    <nav>
+      <a href="index.html">Ana Sayfa</a>
+      <a href="index.html#urunler">Ürünler</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+  </header>
 
-<header>
-<h2>Y&M WEAR</h2>
-<a href="index.html">Ana Sayfa</a>
-</header>
+  <main class="cart-page">
+    <h1>Alışveriş Sepeti</h1>
+    <div id="cartItems" class="cart-items"></div>
+    <div id="totalPrice" class="total-price"></div>
 
-<div class="container">
-<h1>Alışveriş Sepeti</h1>
+    <div class="customer-box">
+      <h2>Teslimat Bilgileri</h2>
+      <input id="adSoyad" placeholder="Ad Soyad" />
+      <input id="telefon" placeholder="Telefon" />
+      <textarea id="adres" placeholder="Adres"></textarea>
+      <button class="primary-btn" onclick="checkoutWhatsApp()">WhatsApp ile Sipariş Ver</button>
+    </div>
+  </main>
 
-<div id="cartItems"></div>
-<div class="total" id="totalPrice"></div>
-
-<input id="adSoyad" placeholder="Ad Soyad">
-<input id="telefon" placeholder="Telefon">
-<textarea id="adres" placeholder="Adres"></textarea>
-
-<button onclick="checkout()">WhatsApp ile Sipariş Ver</button>
-</div>
-
-<script>
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-let cartItems = document.getElementById("cartItems");
-let totalPrice = document.getElementById("totalPrice");
-
-function renderCart(){
-    cartItems.innerHTML = "";
-    let total = 0;
-
-    if(cart.length === 0){
-        cartItems.innerHTML = '<p class="empty">Sepetiniz şu anda boş.</p>';
-        totalPrice.innerHTML = "";
-        return;
-    }
-
-    cart.forEach((item, index) => {
-        total += Number(item.price);
-        cartItems.innerHTML += `
-        <div class="item">
-            <div>
-                <strong>${item.name}</strong>
-                <p class="price">${item.price} TL</p>
-            </div>
-            <button onclick="removeItem(${index})">Sil</button>
-        </div>`;
-    });
-
-    totalPrice.innerHTML = "Toplam: " + total + " TL";
-}
-
-function removeItem(index){
-    cart.splice(index,1);
-    localStorage.setItem("cart", JSON.stringify(cart));
-    renderCart();
-}
-
-function checkout(){
-    if(cart.length === 0){
-        alert("Sepetiniz boş.");
-        return;
-    }
-
-    let adSoyad = document.getElementById("adSoyad").value;
-    let telefon = document.getElementById("telefon").value;
-    let adres = document.getElementById("adres").value;
-
-    if(adSoyad === "" || telefon === "" || adres === ""){
-        alert("Lütfen ad soyad, telefon ve adres bilgilerini doldurun.");
-        return;
-    }
-
-    let mesaj = "Merhaba, Y&M WEAR'dan sipariş vermek istiyorum:\n\n";
-    mesaj += "Ad Soyad: " + adSoyad + "\n";
-    mesaj += "Telefon: " + telefon + "\n";
-    mesaj += "Adres: " + adres + "\n\n";
-    mesaj += "Ürünler:\n";
-
-    let total = 0;
-
-    cart.forEach(item => {
-        mesaj += "- " + item.name + " - " + item.price + " TL\n";
-        total += Number(item.price);
-    });
-
-    mesaj += "\nToplam: " + total + " TL";
-
-    window.open("https://wa.me/905359723901?text=" + encodeURIComponent(mesaj), "_blank");
-}
-
-renderCart();
-</script>
-
+  <script src="js/app.js"></script>
+  <script>renderCart();</script>
 </body>
 </html>
