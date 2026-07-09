@@ -111,7 +111,7 @@ function addToCart(name, price){
   alert(name + " sepete eklendi!");
 }
 
-let adminProducts = JSON.parse(localStorage.getItem("adminProducts")) || [];
+let adminProducts = JSON.parse(localStorage.getItem("adminProducts")) || JSON.parse(localStorage.getItem("products")) || [];
 let productArea = document.querySelector(".products");
 
 adminProducts.forEach(product => {
@@ -121,11 +121,12 @@ adminProducts.forEach(product => {
       <h3>${product.name}</h3>
       <p class="price">${product.price} TL</p>
       <p class="size">S • M • L • XL</p>
-      <button class="buy" onclick="addToCart('${product.name}', ${product.price})">Sepete Ekle</button>
+      <button class="buy" onclick="addToCart('${product.name}', ${Number(product.price)})">Sepete Ekle</button>
       <a href="urun.html" class="info">İncele</a>
     </div>
   `;
 });
+</script>
 </script>
 </body>
 </html>
