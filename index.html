@@ -134,18 +134,40 @@ adminProducts.forEach(product => {
       <h3>${product.name}</h3>
       <p class="price">${product.price} TL</p>
       <p class="size">S • M • L • XL</p>
-      <select class="beden">
-  <option>S</option><option>M</option><option>L</option><option>XL</option>
+     <select class="beden">
+  <option>S</option>
+  <option>M</option>
+  <option>L</option>
+  <option>XL</option>
 </select>
+
 <select class="renk">
-  <option>Siyah</option><option>Beyaz</option><option>Gri</option><option>Bej</option>
+  <option>Siyah</option>
+  <option>Beyaz</option>
+  <option>Gri</option>
+  <option>Bej</option>
 </select>
       <button class="buy" onclick="addToCartWithOptions(this, '${product.name}', ${Number(product.price)})">Sepete Ekle</button>
       <a href="urun.html" class="info">İncele</a>
     </div>
   `;
-});
-</script>
+  function addToCartWithOptions(button, name, price){
+  let card = button.closest(".card");
+  let beden = card.querySelector(".beden").value;
+  let renk = card.querySelector(".renk").value;
+
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart.push({
+    name: name,
+    price: Number(price),
+    beden: beden,
+    renk: renk
+  });
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert(name + " (" + beden + " - " + renk + ") sepete eklendi!");
+}
+
 </script>
 </body>
 </html>
