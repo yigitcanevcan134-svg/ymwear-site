@@ -57,6 +57,19 @@ footer{text-align:center;background:#000;color:#777;padding:25px}
 <h3>Oversize Siyah Tişört</h3>
 <p class="price">799 TL</p>
 <p class="size">S • M • L • XL</p>
+  <select class="beden">
+  <option>S</option>
+  <option>M</option>
+  <option>L</option>
+  <option>XL</option>
+</select>
+
+<select class="renk">
+  <option>Siyah</option>
+  <option>Beyaz</option>
+  <option>Gri</option>
+  <option>Bej</option>
+</select>
 <button class="buy" onclick="addToCart('Oversize Siyah Tişört',799)">Sepete Ekle</button>
 <a href="urun.html" class="info">İncele</a>
 </div>
@@ -121,7 +134,13 @@ adminProducts.forEach(product => {
       <h3>${product.name}</h3>
       <p class="price">${product.price} TL</p>
       <p class="size">S • M • L • XL</p>
-      <button class="buy" onclick="addToCart('${product.name}', ${Number(product.price)})">Sepete Ekle</button>
+      <select class="beden">
+  <option>S</option><option>M</option><option>L</option><option>XL</option>
+</select>
+<select class="renk">
+  <option>Siyah</option><option>Beyaz</option><option>Gri</option><option>Bej</option>
+</select>
+      <button class="buy" onclick="addToCartWithOptions(this, '${product.name}', ${Number(product.price)})">Sepete Ekle</button>
       <a href="urun.html" class="info">İncele</a>
     </div>
   `;
