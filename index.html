@@ -119,9 +119,21 @@ footer{text-align:center;background:#000;color:#777;padding:25px}
 <script>
 function addToCart(name, price){
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  cart.push({name:name, price:Number(price)});
+  cart.push({name:name, price:Number(price), beden:"Seçilmedi", renk:"Seçilmedi"});
   localStorage.setItem("cart", JSON.stringify(cart));
   alert(name + " sepete eklendi!");
+}
+
+function addToCartWithOptions(button, name, price){
+  let card = button.closest(".card");
+  let beden = card.querySelector(".beden") ? card.querySelector(".beden").value : "Seçilmedi";
+  let renk = card.querySelector(".renk") ? card.querySelector(".renk").value : "Seçilmedi";
+
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart.push({name:name, price:Number(price), beden:beden, renk:renk});
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  alert(name + " (" + beden + " - " + renk + ") sepete eklendi!");
 }
 
 let adminProducts = JSON.parse(localStorage.getItem("adminProducts")) || JSON.parse(localStorage.getItem("products")) || [];
@@ -134,40 +146,17 @@ adminProducts.forEach(product => {
       <h3>${product.name}</h3>
       <p class="price">${product.price} TL</p>
       <p class="size">S • M • L • XL</p>
-     <select class="beden">
-  <option>S</option>
-  <option>M</option>
-  <option>L</option>
-  <option>XL</option>
-</select>
-
-<select class="renk">
-  <option>Siyah</option>
-  <option>Beyaz</option>
-  <option>Gri</option>
-  <option>Bej</option>
-</select>
+      <select class="beden">
+        <option>S</option><option>M</option><option>L</option><option>XL</option>
+      </select>
+      <select class="renk">
+        <option>Siyah</option><option>Beyaz</option><option>Gri</option><option>Bej</option>
+      </select>
       <button class="buy" onclick="addToCartWithOptions(this, '${product.name}', ${Number(product.price)})">Sepete Ekle</button>
       <a href="urun.html" class="info">İncele</a>
     </div>
   `;
-  function addToCartWithOptions(button, name, price){
-  let card = button.closest(".card");
-  let beden = card.querySelector(".beden").value;
-  let renk = card.querySelector(".renk").value;
-
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  cart.push({
-    name: name,
-    price: Number(price),
-    beden: beden,
-    renk: renk
-  });
-
-  localStorage.setItem("cart", JSON.stringify(cart));
-  alert(name + " (" + beden + " - " + renk + ") sepete eklendi!");
-}
-
+});
 </script>
 </body>
 </html>
