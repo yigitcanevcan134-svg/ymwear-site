@@ -103,6 +103,29 @@ footer{text-align:center;background:#000;color:#777;padding:25px}
 
 <footer>© 2026 Y&M WEAR</footer>
 
-<script src="js/app.js"></script>
+<script>
+function addToCart(name, price){
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart.push({name:name, price:Number(price)});
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert(name + " sepete eklendi!");
+}
+
+let adminProducts = JSON.parse(localStorage.getItem("adminProducts")) || [];
+let productArea = document.querySelector(".products");
+
+adminProducts.forEach(product => {
+  productArea.innerHTML += `
+    <div class="card">
+      <img src="${product.image}">
+      <h3>${product.name}</h3>
+      <p class="price">${product.price} TL</p>
+      <p class="size">S • M • L • XL</p>
+      <button class="buy" onclick="addToCart('${product.name}', ${product.price})">Sepete Ekle</button>
+      <a href="urun.html" class="info">İncele</a>
+    </div>
+  `;
+});
+</script>
 </body>
 </html>
